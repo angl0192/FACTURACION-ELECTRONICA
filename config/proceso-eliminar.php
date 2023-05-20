@@ -40,3 +40,12 @@ if($modulo == 'Marca'){
     $salidaJson = array("resultado" => $resultado);
     echo json_encode($salidaJson);
 }
+/************************************************************/
+/******************** BORRAR PRODUCTOS **********************/
+if($modulo == 'Productos'){
+    $cod_producto = $_POST['cod_producto'];
+    $sqlEliminar = mysqli_query($conexion, "DELETE FROM productos WHERE cod_producto = '$cod_producto'");
+    $resultado = "SI";
+    $salidaJson = array("resultado" => $resultado);
+    echo json_encode($salidaJson);
+}

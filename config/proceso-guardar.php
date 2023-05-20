@@ -318,3 +318,84 @@ if($modulo == 'Marca'){
     $salidaJson = array("respuesta" => $respuesta);
     echo json_encode($salidaJson);
 }
+/*************************************************************/
+/************************ PRODUCTO ***************************/
+if($modulo == 'Producto'){
+    $cod_producto = $_POST['cod_producto'];
+    $fecha_creacion = date('Y-m-d H:i:s');
+    $fecha_actualizacion = date('Y-m-d H:i:s');
+    $cod_categoria = $_POST['cod_categoria'];
+    $cod_marca = $_POST['cod_marca'];
+    $cod_personal = $xCodPer;
+    $codigo = $_POST['codigo'];
+    $nombre_producto = $_POST['nombre_producto'];
+    $unidad_medida = $_POST['unidad_medida'];
+    $stock_actual = $_POST['stock_actual'];
+    $stock_minimo = $_POST['stock_minimo'];
+    $precio_unitario = $_POST['precio_unitario'];
+    $precio_cuarto = $_POST['precio_cuarto'];
+    $precio_mayor = $_POST['precio_mayor'];
+    $estado = $_POST['estado'];
+    $proceso = $_POST['proceso'];
+    if($proceso == 'RegistrarProducto'){
+        $sqlVerificar = mysqli_query($conexion, "SELECT cod_producto FROM productos WHERE codigo = '$codigo'");
+        $numres = mysqli_num_rows($sqlVerificar);
+        if($numres == 0){
+            $sqlInsertar = mysqli_query($conexion, "INSERT INTO productos (
+            fecha_creacion,
+            fecha_actualizacion,
+            cod_categoria,
+            cod_marca,
+            cod_personal,
+            codigo,
+            nombre_producto,
+            unidad_medida,
+            stock_actual,
+            stock_minimo,
+            precio_unitario,
+            precio_cuarto,
+            precio_mayor,
+            estado
+            ) VALUES (
+            '$fecha_creacion',
+            '$fecha_actualizacion',
+            '$cod_categoria',
+            '$cod_marca',
+            '$cod_personal',
+            '$codigo',
+            '$nombre_producto',
+            '$unidad_medida',
+            '$stock_actual',
+            '$stock_minimo',
+            '$precio_unitario',
+            '$precio_cuarto',
+            '$precio_mayor',
+            '$estado')");
+            $respuesta = 'SI';
+        }else{
+            $respuesta = 'NO';
+        }
+    }
+    if($proceso == 'ActualizarProducto'){
+        $sqlActualizar = mysqli_query($conexion, "UPDATE productos SET
+        cod_producto = '$cod_producto',
+        fecha_actualizacion = '$fecha_actualizacion',
+        cod_categoria = '$cod_categoria',
+        cod_marca = '$cod_marca',
+        cod_personal = '$cod_personal',
+        codigo = '$codigo',
+        nombre_producto = '$nombre_producto',
+        unidad_medida = '$unidad_medida',
+        stock_actual = '$stock_actual',
+        stock_minimo = '$stock_minimo',
+        precio_unitario = '$precio_unitario',
+        precio_cuarto = '$precio_cuarto',
+        precio_mayor = '$precio_mayor',
+        estado = '$estado' WHERE cod_producto = '$cod_producto'");
+        $respuesta = 'SI';
+    }
+    /*************************************************************/
+    /************** CONFIGURAR JSON DE RESPUESTA *****************/
+    $salidaJson = array("respuesta" => $respuesta);
+    echo json_encode($salidaJson);
+}

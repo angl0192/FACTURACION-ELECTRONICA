@@ -63,7 +63,7 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="categoria.php">Categorias</a></li>
                         <li><a href="marca.php">Marcas</a></li>
-                        <li><a href="producto.php">Productos</a></li>
+                        <li><a href="productos.php">Productos</a></li>
                     </ul>
                 </li>
 
