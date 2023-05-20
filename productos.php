@@ -116,7 +116,7 @@ require("config/inicializar-datos.php");
                                                     <td><?= $estado ?></td>
                                                     <td>
                                                         <a href="#" class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#bs-example-modal-xl" 
-                                                        data-remote="mod-productos.php?cod_personal=<?=$cod_producto?>" data-sb-backdrop="static" 
+                                                        data-remote="mod-productos.php?cod_producto=<?=$cod_producto?>" data-sb-backdrop="static" 
                                                         data-sb-keyboard="false">
                                                             <i class="ri-edit-fill align-middle"></i></a>
                                                         <a href="" class="btn btn-outline-danger btn-sm borrarReg">
