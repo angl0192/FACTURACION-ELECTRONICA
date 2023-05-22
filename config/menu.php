@@ -73,9 +73,9 @@
                         <span>Ingresos y Salidas</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="#">Ingreso Productos</a></li>
-                        <li><a href="#">Ingreso Productos</a></li>
-                        <li><a href="#">Devoluciones</a></li>
+                        <li><a href="ingreso-productos.php">Ingreso Productos</a></li>
+                        <li><a href="salida-productos.php">Salida Productos</a></li>
+                        <li><a href="devoluciones.php">Devoluciones</a></li>
                     </ul>
                 </li>
 

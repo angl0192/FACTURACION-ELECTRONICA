@@ -55,7 +55,7 @@ require("config/inicializar-datos.php");
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                    <h4 class="mb-sm-0">PUNTOS DE VENTA/LOCALES</h4>
+                                    <h4 class="mb-sm-0">PUNTOS DE VENTA / LOCALES</h4>
 
                                     <div class="page-title-right">
                                         <div class="button-items">
@@ -147,7 +147,7 @@ require("config/inicializar-datos.php");
             <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="myExtraLargeModalLabel">REGISTRAR/EDITAR PUNTOS DE VENTA</h5>
+                        <h5 class="modal-title" id="myExtraLargeModalLabel">REGISTRAR / EDITAR PUNTOS DE VENTA</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">

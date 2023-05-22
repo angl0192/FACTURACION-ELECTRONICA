@@ -60,6 +60,11 @@ require("config/inicializar-datos.php");
                                     <div class="page-title-right">
                                         <div class="button-items">
                                             <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" 
+                                            data-bs-target="#bs-example-modal-xl" data-remote="ingreso-productos-almacen.php" data-sb-backdrop="static" data-sb-keyboard="false">
+                                                <i class="mdi mdi-application-import align-middle"></i>
+                                                SUBIR PRODUCTOS
+                                            </button>
+                                            <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal"
                                             data-bs-target="#bs-example-modal-xl" data-remote="reg-productos.php" data-sb-backdrop="static" data-sb-keyboard="false">
                                                 <i class="ri-add-line align-middle"></i>
                                                 NUEVO PRODUCTO
@@ -150,7 +155,7 @@ require("config/inicializar-datos.php");
             <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="myExtraLargeModalLabel">REGISTRAR/EDITAR PRODUCTO</h5>
+                        <h5 class="modal-title" id="myExtraLargeModalLabel">REGISTRAR / EDITAR / SUBIR PRODUCTOS</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">

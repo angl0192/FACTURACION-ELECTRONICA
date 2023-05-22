@@ -399,3 +399,89 @@ if($modulo == 'Producto'){
     $salidaJson = array("respuesta" => $respuesta);
     echo json_encode($salidaJson);
 }
+/*************************************************************/
+/*************** INGRESAR PRODUCTOS A ALMACEN ****************/
+if($modulo == 'ProductosAlmacen'){
+    $cod_puntoventa = $_POST['cod_puntoventa'];
+    $archivocsv = $_POST['archivocsv'];
+    /*********************************************************/
+    $uploadfile = '../img-apps/stockcsv/'.$archivocsv;
+    $xFile = fopen($uploadfile, "r+");
+    rewind($xFile);
+    while(!feof($xFile)){
+        $xDatos = fgets($xFile);
+        if($xDatos != ''){
+            $tDatos = explode(";", $xDatos);
+            $fecha_creacion = date('Y-m-d H:i:s');
+            $fecha_actualizacion = date('Y-m-d H:i:s');
+            /**************************************************/
+            $categoria = str_replace('""','&#34',trim($tDatos[0]));
+            $sqlCaterogias = mysqli_query($conexion, "SELECT cod_categoria FROM categoria_productos WHERE categoria = '$categoria'");
+            $fcat = mysqli_fetch_array($sqlCaterogias);
+            $cod_categoria = $fcat['cod_categoria'];
+            /**************************************************/
+            $marca = str_replace('""','&#34',trim($tDatos[1]));
+            $sqlMarcas = mysqli_query($conexion, "SELECT cod_marca FROM marcas WHERE marca = '$marca'");
+            $fmarca = mysqli_fetch_array($sqlMarcas);
+            $cod_marca = $fmarca['cod_marca'];
+            /**************************************************/
+            $cod_personal = $xCodPer;
+            $codigo = trim($tDatos[2]);
+            $nombre_producto = str_replace('""','&#34',trim($tDatos[3]));
+            $unidad_medida = trim($tDatos[4]);
+            $stock_actual = trim($tDatos[5]);
+            $precio_unitario = trim($tDatos[6]);
+            $precio_cuarto = trim($tDatos[7]);
+            $precio_mayor = trim($tDatos[8]);
+            $estado = "A";
+            /**************************************************/
+            $sqlVerificar = mysqli_query($conexion, "SELECT cod_producto FROM productos WHERE codigo = '$codigo'");
+            $numres = mysqli_num_rows($sqlVerificar);
+            if($numres == 0){
+                $sqlInsertar = mysqli_query($conexion, "INSERT INTO productos (
+                fecha_creacion,
+                fecha_actualizacion,
+                cod_categoria,
+                cod_marca,
+                cod_personal,
+                codigo,
+                nombre_producto,
+                unidad_medida,
+                stock_actual,
+                precio_unitario,
+                precio_cuarto,
+                precio_mayor,
+                estado
+                )VALUES(
+                '$fecha_creacion',
+                '$fecha_actualizacion',
+                '$cod_categoria',
+                '$cod_marca',
+                '$cod_personal',
+                '$codigo',
+                '$nombre_producto',
+                '$unidad_medida',
+                '$stock_actual',
+                '$precio_unitario',
+                '$precio_cuarto',
+                '$precio_mayor',
+                '$estado')");
+            }else{
+                $sqlActualizar = mysqli_query($conexion, "UPDATE productos SET
+                fecha_actualizacion = '$fecha_actualizacion',
+                cod_personal = '$cod_personal',
+                stock_actual = stock_actual + '$stock_actual',
+                precio_unitario = '$precio_unitario',
+                precio_cuarto = '$precio_cuarto',
+                precio_mayor = '$precio_mayor',
+                ");
+            }
+        }
+    }
+    fclose($xFile);
+    $respuesta = "SI";
+    /*********************************************************/
+    $salidaJson = array("respuesta" => $respuesta);
+    echo json_encode($salidaJson);
+    /*********************************************************/
+}
